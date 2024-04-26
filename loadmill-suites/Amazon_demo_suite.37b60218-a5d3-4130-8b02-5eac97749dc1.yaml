@@ -6,6 +6,7 @@ conf:
     - origin_2: https://aax-eu.amazon.in
     - origin_3: https://aan.amazon.in
     - baseurl: https://unagi.amazon.in
+    - origin_4: https://data.amazon.in
   useCookies: true
   cookiesScope: Suite
   loginFlow: []
@@ -27,6 +28,9 @@ flows:
             mimeType: text/plain;charset=UTF-8
           headers:
             - Referer: https://www.amazon.in/
+          assert:
+            - check: __status
+              equals: "200"
           id: 289aed3f-be6d-49cf-84ea-f6ca8e3d444f
 
         - description: Send a post request to the "cem" endpoint
