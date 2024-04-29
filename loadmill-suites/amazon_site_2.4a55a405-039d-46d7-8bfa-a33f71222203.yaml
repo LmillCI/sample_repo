@@ -60,6 +60,9 @@ flows:
             mimeType: application/json
           headers:
             - Referer: https://www.amazon.in/
+          assert:
+            - check: __status
+              equals: "200"
           id: 9c61ed5d-85b3-43bf-8f5e-fe0254146457
 
         - description: Send a post request to capture search autocomplete ui service metrics
