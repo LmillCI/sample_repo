@@ -1,0 +1,198 @@
+conf:
+  meta:
+    description: amazon site 2
+  parameters:
+    - origin_1: https://unagi.amazon.in
+    - origin_2: https://aax-eu.amazon.in
+    - origin_3: https://www.amazon.in
+  useCookies: true
+  cookiesScope: Suite
+  loginFlow: []
+  authenticationHeaders: []
+  parametersScope: SUITE
+flows:
+  - id: 6e0ed9ba-38c9-48ba-8961-a287371ece6f
+    order: 0
+    conf:
+      meta:
+        description: iphone search
+      requests:
+        
+        - description: Send a post request to capture search autocomplete ui service metrics
+          method: POST
+          url: ${origin_1}/1/events/com.amazon.eel.SearchAutocompleteUIServiceMetrics.nexus
+          postData:
+            text: |-
+              {
+                "events": [
+                  {
+                    "data": {
+                      "metricName": "RetrieveSuggestionsLatency",
+                      "platform": "desktop",
+                      "marketplaceId": "A21TJRUUN4KGV",
+                      "isError": false,
+                      "timestamp": 1714368267098,
+                      "latency": 226
+                    }
+                  },
+                  {
+                    "data": {
+                      "metricName": "TimeToRedraw",
+                      "platform": "desktop",
+                      "marketplaceId": "A21TJRUUN4KGV",
+                      "isError": false,
+                      "timestamp": 1714368267098,
+                      "latency": 7
+                    }
+                  },
+                  {
+                    "data": {
+                      "metricName": "TimeToFirstSuggestion",
+                      "platform": "desktop",
+                      "marketplaceId": "A21TJRUUN4KGV",
+                      "isError": false,
+                      "timestamp": 1714368267095,
+                      "latency": 225
+                    }
+                  }
+                ]
+              }
+            mimeType: application/json
+          headers:
+            - Referer: https://www.amazon.in/
+          id: 9c61ed5d-85b3-43bf-8f5e-fe0254146457
+
+        - description: Send a post request to capture search autocomplete ui service metrics
+          method: POST
+          url: ${origin_1}/1/events/com.amazon.eel.SearchAutocompleteUIServiceMetrics.nexus
+          postData:
+            text: |-
+              {
+                "events": [
+                  {
+                    "data": {
+                      "metricName": "SearchAcceptance",
+                      "platform": "desktop",
+                      "marketplaceId": "A21TJRUUN4KGV",
+                      "isError": false,
+                      "timestamp": 1714368269305,
+                      "count": 1
+                    }
+                  }
+                ]
+              }
+            mimeType: application/json
+          headers:
+            - Referer: https://www.amazon.in/
+          id: af70a26a-dbf8-4fde-8077-bbe9a509ff53
+
+        - description: Send a post request with specific payload data for program type sbc
+          method: POST
+          url: ${origin_2}/x/px/RHV3eLORdBtoEhnlV_u0zlAAAAGPKE_NVAMAAAH2AQBvbm9fdHhuX2JpZDIgICBvbm9fdHhuX2ltcDEgICC3CEuk/v/%7B%22v%22:%7B%22def%22:%22iab%22,%22event%22:%22VIEWED%22,%22p%22:89,%22t%22:1.073%7D,%22programType%22:%22SBC%22%7D
+          postData:
+            text: '{"v":{"def":"iab","event":"VIEWED","p":89,"t":1.073},"programType":"SBC"}'
+            mimeType: text/plain;charset=UTF-8
+          headers:
+            - Referer: https://www.amazon.in/
+          id: 93c26e2e-2f07-4ef3-8ddc-f46ccb160efd
+
+        - description: Send a post request to handle the buy box for a product
+          method: POST
+          url: ${origin_3}/gp/product/handle-buy-box/ref=dp_start-bbf_1_glance
+          postData:
+            text: ""
+            mimeType: application/x-www-form-urlencoded
+            params:
+              - name: anti-csrftoken-a2z
+                value: hN6xRJpdvOFnWNEb7cYVKFqRtdKtSkcGWiby417mUpROAAAAAGYvLxFmZDI0NzNlNC1kMGEzLTQ3YTgtYmQzZC0xMWM3ZWUzN2YzMTg%3D
+              - name: items%5B0.base%5D%5Basin%5D
+                value: B0CHX1K2ZC
+              - name: clientName
+                value: OffersX_OfferDisplay_DetailPage
+              - name: items%5B0.base%5D%5BofferListingId%5D
+                value: 7ag8lRvsku6L%252F1f2ioFfrRIxIbRpg9KuDnYEyCYgmj0mIEq4PIOZZ5FVxkDBSjPad52ssCRb0KI2LlRi84MUs3NXTh0ewTh1Mqewr7u3H49cCsbEFqWyBukgJVtE5lVcIYploSlwz9I3gAKRIBbfbcfKJ8OsESgy
+              - name: offerListingID
+                value: 7ag8lRvsku6L%252F1f2ioFfrRIxIbRpg9KuDnYEyCYgmj0mIEq4PIOZZ5FVxkDBSjPad52ssCRb0KI2LlRi84MUs3NXTh0ewTh1Mqewr7u3H49cCsbEFqWyBukgJVtE5lVcIYploSlwz9I3gAKRIBbfbcfKJ8OsESgy
+              - name: session-id
+                value: 260-2613995-6350600
+              - name: ASIN
+                value: B0CHX1K2ZC
+              - name: isMerchantExclusive
+                value: "0"
+              - name: merchantID
+                value: A14CZOWI0VEHLG
+              - name: isAddon
+                value: "0"
+              - name: nodeID
+                value: ""
+              - name: sellingCustomerID
+                value: ""
+              - name: qid
+                value: "1714368269"
+              - name: sr
+                value: 1-1-e0fa1fdd-d857-4087-adda-5bd576b25987
+              - name: storeID
+                value: ""
+              - name: tagActionCode
+                value: ""
+              - name: viewID
+                value: glance
+              - name: rebateId
+                value: ""
+              - name: ctaDeviceType
+                value: desktop
+              - name: ctaPageType
+                value: detail
+              - name: usePrimeHandler
+                value: "0"
+              - name: smokeTestEnabled
+                value: "true"
+              - name: rsid
+                value: 260-2613995-6350600
+              - name: sourceCustomerOrgListID
+                value: ""
+              - name: sourceCustomerOrgListItemID
+                value: ""
+              - name: wlPopCommand
+                value: ""
+              - name: submit.add-to-cart
+                value: Add+to+Cart
+          headers:
+            - device-memory: "8"
+            - downlink: "0.75"
+            - dpr: "1.2000000000000002"
+            - ect: 4g
+            - referer: https://www.amazon.in/gp/aw/d/B0CHX1K2ZC/?_encoding=UTF8&pd_rd_plhdr=t&aaxitk=882240b580c0f3d6b24ce5e0a73c6ab9&hsa_cr_id=0&qid=1714368269&sr=1-1-e0fa1fdd-d857-4087-adda-5bd576b25987&ref_=sbx_be_s_sparkle_mcd_asin_0_img&pd_rd_w=j6njR&content-id=amzn1.sym.df9fe057-524b-4172-ac34-9a1b3c4e647d%3Aamzn1.sym.df9fe057-524b-4172-ac34-9a1b3c4e647d&pf_rd_p=df9fe057-524b-4172-ac34-9a1b3c4e647d&pf_rd_r=2BP7Y7YAAPA28QKA2JTB&pd_rd_wg=yLYWH&pd_rd_r=2fcc373f-1077-4f22-80bc-f18e7611b160
+            - rtt: "100"
+            - viewport-width: "915"
+          id: 1543f169-f8c2-4e9a-96f8-5b2e3d413a6c
+
+        - description: Send a post request to capture search autocomplete ui service metrics
+          method: POST
+          url: ${origin_1}/1/events/com.amazon.eel.SearchAutocompleteUIServiceMetrics.nexus
+          postData:
+            text: |-
+              {
+                "events": [
+                  {
+                    "data": {
+                      "metricName": "HeadLatency",
+                      "platform": "desktop",
+                      "marketplaceId": "A21TJRUUN4KGV",
+                      "isError": false,
+                      "timestamp": 1714368277692,
+                      "latency": 203
+                    }
+                  }
+                ]
+              }
+            mimeType: application/json
+          headers:
+            - Referer: https://www.amazon.in/
+          id: 5d231ebb-442b-4873-a64c-c2867ac9266d
+
+      scopeParameters: []
+    status: Active
+dependencies:
+  login:
+    id: 6a5fa1a5-5392-4521-b7bf-f4a2b8fdaa50
