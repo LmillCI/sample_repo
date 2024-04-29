@@ -1,0 +1,277 @@
+conf:
+  meta:
+    description: lamdatest site
+  parameters:
+    - base_url: https://ecommerce-playground.lambdatest.io
+  useCookies: true
+  cookiesScope: Suite
+  loginFlow: []
+  authenticationHeaders: []
+  parametersScope: SUITE
+flows:
+  - id: 77453f9d-92c1-45ed-9822-a14af13a0bdd
+    order: 0
+    conf:
+      meta:
+        description: Recorded Flow - Apr 05 09:18
+      requests:
+        
+        - description: Create a new resource on the server
+          method: POST
+          url: ${base_url}/index.php?route=checkout/cart/add
+          postData:
+            text: ""
+            mimeType: application/x-www-form-urlencoded
+            params:
+              - name: quantity
+                value: "2"
+              - name: product_id
+                value: "28"
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=28&search=HTC&sort=p.viewed&order=DESC
+          assert:
+            - check: __status
+              equals: "200"
+          id: 6d6704cf-e19b-4f4d-b85c-ec55f8309732
+
+        - description: Retrieve information from the server
+          method: GET
+          url: ${base_url}/index.php?route=extension/total/shipping/country&country_id=99
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=checkout/cart
+          extract:
+            - zone_id_of_30th_zone_in_response_body_2:
+                jsonPath: $["zone"][29]["zone_id"]
+            - status_in_response_body_2:
+                jsonPath: $["status"]
+          assert:
+            - check: zone_id_of_30th_zone_in_response_body_2
+            - check: status_in_response_body_2
+          id: e0d118a9-417a-4224-b883-d140bfa297f9
+
+        - description: Update an existing resource on the server
+          method: POST
+          url: ${base_url}/index.php?route=extension/maza/checkout/save
+          postData:
+            text: ""
+            mimeType: application/x-www-form-urlencoded
+            params:
+              - name: telephone
+                value: "9999999999"
+              - name: payment_address
+                value: existing
+              - name: address_id
+                value: "5096"
+              - name: firstname
+                value: ""
+              - name: lastname
+                value: ""
+              - name: company
+                value: ""
+              - name: address_1
+                value: ""
+              - name: address_2
+                value: ""
+              - name: city
+                value: ""
+              - name: postcode
+                value: ""
+              - name: country_id
+                value: "99"
+              - name: zone_id
+                value: ${__encode_url(zone_id_of_30th_zone_in_response_body_2)}
+              - name: shipping_address_same
+                value: "1"
+              - name: shipping_address
+                value: existing
+              - name: shipping%5Baddress_id%5D
+                value: "5096"
+              - name: shipping%5Bfirstname%5D
+                value: ""
+              - name: shipping%5Blastname%5D
+                value: ""
+              - name: shipping%5Bcompany%5D
+                value: ""
+              - name: shipping%5Baddress_1%5D
+                value: ""
+              - name: shipping%5Baddress_2%5D
+                value: ""
+              - name: shipping%5Bcity%5D
+                value: ""
+              - name: shipping%5Bpostcode%5D
+                value: "500020"
+              - name: shipping%5Bcountry_id%5D
+                value: "99"
+              - name: shipping%5Bzone_id%5D
+                value: ${__encode_url(zone_id_of_30th_zone_in_response_body_2)}
+              - name: payment_method
+                value: cod
+              - name: shipping_method
+                value: flat.flat
+              - name: coupon
+                value: ""
+              - name: voucher
+                value: ""
+              - name: comment
+                value: ""
+              - name: newsletter
+                value: "1"
+              - name: agree
+                value: "1"
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=checkout/checkout
+          id: 4ab22f90-131d-4561-b688-a5c5c71ec43a
+
+        - description: Retrieve information from the server again
+          method: GET
+          url: ${base_url}/index.php?route=checkout/success
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=extension/maza/checkout/confirm
+          id: 7ebddf20-30b2-45eb-b6b8-8ebab11aaa8a
+
+      scopeParameters: []
+    status: Active
+  - id: a4a5723e-806b-488b-99ff-729ed507100d
+    order: 1
+    conf:
+      meta:
+        description: Sample order checkout
+      requests:
+        
+        - description: Create a new resource
+          method: POST
+          url: ${base_url}/index.php?route=account/wishlist/add
+          postData:
+            text: ""
+            mimeType: application/x-www-form-urlencoded
+            params:
+              - name: product_id
+                value: "28"
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=product/search&sort=p.viewed&order=DESC&search=HTC
+          id: b67c084b-eb02-4cdc-8098-dd0551d4b0e6
+
+        - description: Update an existing resource
+          method: POST
+          url: ${base_url}/index.php?route=checkout/cart/add
+          postData:
+            text: ""
+            mimeType: application/x-www-form-urlencoded
+            params:
+              - name: quantity
+                value: "2"
+              - name: product_id
+                value: "28"
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=product/product&product_id=28&search=HTC&sort=p.viewed&order=DESC
+          assert:
+            - check: __status
+              equals: "200"
+          id: 49007ea1-b3c0-408b-9e38-580430aa3a46
+
+        - description: Retrieve information about a resource
+          method: GET
+          url: ${base_url}/index.php?route=checkout/checkout/country&country_id=222
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=checkout/checkout
+          extract:
+            - zone_id_of_58th_zone_in_response_body_3:
+                jsonPath: $["zone"][57]["zone_id"]
+            - postcode_required_in_response_body_3:
+                jsonPath: $["postcode_required"]
+          assert:
+            - check: zone_id_of_58th_zone_in_response_body_3
+            - check: postcode_required_in_response_body_3
+          id: 7e865bae-c842-43b2-a863-4f45a1a82751
+
+        - description: Delete a resource
+          method: POST
+          url: ${base_url}/index.php?route=extension/maza/checkout/save
+          postData:
+            text: ""
+            mimeType: application/x-www-form-urlencoded
+            params:
+              - name: account
+                value: login
+              - name: login_email
+                value: ""
+              - name: login_password
+                value: ""
+              - name: customer_group_id
+                value: "1"
+              - name: firstname
+                value: ""
+              - name: lastname
+                value: ""
+              - name: email
+                value: ""
+              - name: telephone
+                value: ""
+              - name: password
+                value: ""
+              - name: confirm
+                value: ""
+              - name: company
+                value: ""
+              - name: address_1
+                value: ""
+              - name: address_2
+                value: ""
+              - name: city
+                value: ""
+              - name: postcode
+                value: ""
+              - name: country_id
+                value: "222"
+              - name: zone_id
+                value: ${__encode_url(zone_id_of_58th_zone_in_response_body_3)}
+              - name: shipping_address_same
+                value: "1"
+              - name: shipping%5Bfirstname%5D
+                value: ""
+              - name: shipping%5Blastname%5D
+                value: ""
+              - name: shipping%5Bcompany%5D
+                value: ""
+              - name: shipping%5Baddress_1%5D
+                value: ""
+              - name: shipping%5Baddress_2%5D
+                value: ""
+              - name: shipping%5Bcity%5D
+                value: ""
+              - name: shipping%5Bpostcode%5D
+                value: ""
+              - name: shipping%5Bcountry_id%5D
+                value: "222"
+              - name: shipping%5Bzone_id%5D
+                value: ${__encode_url(zone_id_of_58th_zone_in_response_body_3)}
+              - name: payment_method
+                value: cod
+              - name: shipping_method
+                value: flat.flat
+              - name: coupon
+                value: ""
+              - name: voucher
+                value: ""
+              - name: comment
+                value: ""
+              - name: newsletter
+                value: "1"
+              - name: agree
+                value: "1"
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=checkout/checkout
+          id: ff1b2229-6acd-43ec-9322-09e2360c648e
+
+        - description: Retrieve a list of all resources
+          method: GET
+          url: ${base_url}/index.php?route=account/login
+          headers:
+            - Referer: https://ecommerce-playground.lambdatest.io/index.php?route=checkout/checkout
+          id: 6aebb24f-7117-4960-8576-f59a0a6d00a6
+
+      scopeParameters: []
+    status: Active
+dependencies:
+  login:
+    id: 38578d11-0eb2-43c8-8ce6-eff98d101a60
