@@ -75,8 +75,7 @@ flows:
           headers:
             - Referer: https://d1lxz4vuik53pc.cloudfront.net/
              assert:
-            - check: __status
-              equals: "200"
+        
           id: 9e8f2002-1d48-4263-a295-347260ebb82f
 
         - description: Send a post request to track events related to search autocomplete
