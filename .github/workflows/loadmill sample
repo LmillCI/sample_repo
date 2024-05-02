@@ -1,0 +1,25 @@
+on: [push, workflow_dispatch]
+
+jobs:
+  test_the_action:
+    runs-on: ubuntu-latest
+    name: A job to run test plan
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: test_our_action_step
+        uses: ./ # Uses an action in the root directory
+        id: loadmillTP
+        with:
+          id: '1aee8675-c478-4701-a11b-78d64d775a07'
+          token: 'bwJdY4RAPUrvhQLbfjGrqNhZzlV7AM62PFARSAaa'
+          additionalDescription: "Commit ${{ github.ref }} by ${{ github.actor }}"
+          labels: 'sanity'
+          parameters: 'testParam=testValue,anotherTestParam=anotherTestValue'
+          healthcheckURL: 'https://www.amazon.in/'
+          healthcheckTimeout: '10'
+      # Use the output from the `test_our_action_step` step
+      - name: Get the output result
+        run: echo "The result was ${{ steps.loadmillTP.outputs.result }}"
