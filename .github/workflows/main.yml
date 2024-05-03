@@ -20,4 +20,4 @@ jobs:
           additionalDescription: "Commit ${{ github.ref }} by ${{ github.actor }}"
 
       - name: Print Test Plan Result
-        run: echo "Test Plan Result- ${{ steps.outputs.result}}"
+        run: echo "Test Plan Result- ${{ steps.loadmill.outputs.result}}"
