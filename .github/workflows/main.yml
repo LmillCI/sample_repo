@@ -18,4 +18,4 @@ jobs:
 
       - name: Run Loadmill tests
       
-        run: npx loadmill run --project-id  1aee8675-c478-4701-a11b-78d64d775a07 --token 1f3aGU3i5XxNFP4D7GvWR2OZWBmbsrDbHmHgpzw9
+        run: loadmill e904f4dd-459b-4fc5-a58a-cd0354ffddea | load-config-file> -t sV0v07XADFyWRYfSmoEnGUp3Dlg8r2emYWHJhT8g 
