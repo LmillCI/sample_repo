@@ -19,5 +19,6 @@ jobs:
           id: 'e904f4dd-459b-4fc5-a58a-cd0354ffddea'
           token: ${{ secrets.API_TOKEN }}
           additionalDescription: "Commit ${{ github.ref }} by ${{ github.actor }}"
-          run: echo "Output [${{steps.run_test.outputs.result}}]"
+      - name: Result 
+        run: echo "Output [${{steps.run_test.outputs.result}}]"
       
