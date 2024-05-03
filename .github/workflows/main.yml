@@ -14,8 +14,5 @@ jobs:
           id: '1aee8675-c478-4701-a11b-78d64d775a07'
           token: 'bwJdY4RAPUrvhQLbfjGrqNhZzlV7AM62PFARSAaa'
           additionalDescription: "Commit ${{ github.ref }} by ${{ github.actor }}"
-          labels: 'sanity'
-          parameters: 'testParam=testValue,anotherTestParam=anotherTestValue'
-          healthcheckURL: 'https://loadmill-test-blog.herokuapp.com/'
-          healthcheckTimeout: '10'
+          
      
