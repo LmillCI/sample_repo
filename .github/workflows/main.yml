@@ -17,4 +17,5 @@ jobs:
         run: npm i -g loadmill # Replace with your actual dependency installation command
 
       - name: Run Loadmill tests
-        run: npm loadmill 1aee8675-c478-4701-a11b-78d64d775a07 --test-plan -w -t bwJdY4RAPUrvhQLbfjGrqNhZzlV7AM62PFARSAaa
+      
+        run: npx loadmill run --project-id  1aee8675-c478-4701-a11b-78d64d775a07--token bwJdY4RAPUrvhQLbfjGrqNhZzlV7AM62PFARSAaa
