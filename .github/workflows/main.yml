@@ -1,4 +1,4 @@
-name: Loadmill Tests
+name: Loadmill Test Plan Workflow
 
 on:
   push:
@@ -6,19 +6,18 @@ on:
       - main
 
 jobs:
-  loadmill:
+  test_job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: npm i -g loadmill # Replace with your actual dependency installation command
+      - name: Run Loadmill Test Plan
+        uses: loadmill/run-test-plan-action@v1
+        with:
+          id: 'e904f4dd-459b-4fc5-a58a-cd0354ffddea'
+          token: ${{ secrets.API_TOKEN }}
+          additionalDescription: "Commit ${{ github.ref }} by ${{ github.actor }}"
 
-      - name: Run Loadmill tests
-        run: loadmill e904f4dd-459b-4fc5-a58a-cd0354ffddea --test-plan -w -v -t sV0v07XADFyWRYfSmoEnGUp3Dlg8r2emYWHJhT8g
-        id: run_tests
-      - name: Get the output result
-        run: echo "Test Plan Result:${{ steps.loadmill.outputs.result }}"
-        
+      - name: Print Test Plan Result
+        run: echo "Test Plan Result:${{steps.loadmill.outputs.result }}"
