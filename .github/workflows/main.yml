@@ -17,5 +17,4 @@ jobs:
         run: npm i -g loadmill # Replace with your actual dependency installation command
 
       - name: Run Loadmill tests
-      
-        run: loadmill e904f4dd-459b-4fc5-a58a-cd0354ffddea | load-config-file> -t sV0v07XADFyWRYfSmoEnGUp3Dlg8r2emYWHJhT8g 
+        run: loadmill e904f4dd-459b-4fc5-a58a-cd0354ffddea --test-plan -w -v -t sV0v07XADFyWRYfSmoEnGUp3Dlg8r2emYWHJhT8g 
