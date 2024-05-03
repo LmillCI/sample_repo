@@ -19,4 +19,4 @@ jobs:
       - name: Run Loadmill tests
         run: loadmill e904f4dd-459b-4fc5-a58a-cd0354ffddea --test-plan -w -v -t sV0v07XADFyWRYfSmoEnGUp3Dlg8r2emYWHJhT8g
       - name: Get the output result
-        run: echo "The result was ${{ steps.loadmill.outputs.result }}"
+        run: echo "Test Plan Result - ${{steps.loadmill.outputs.result}}"
