@@ -1,0 +1,24 @@
+name: Loadmill Test Plan Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Run Loadmill Test Plan
+        id: run_test
+        uses: loadmill/run-test-plan-action@v1
+        with:
+          id: 'e904f4dd-459b-4fc5-a58a-cd0354ffddea'
+          token: ${{ secrets.API_TOKEN }}
+          additionalDescription: "Commit ${{ github.ref }} by ${{ github.actor }}"
+      - name: Result 
+        run: echo "Output [${{steps.run_test.outputs.result}}]"
+      
