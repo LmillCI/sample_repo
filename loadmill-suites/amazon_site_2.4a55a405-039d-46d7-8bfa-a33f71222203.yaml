@@ -192,6 +192,9 @@ flows:
             mimeType: application/json
           headers:
             - Referer: https://www.amazon.in/
+          assert:
+            - check: __status
+              equals: "200"
           id: 5d231ebb-442b-4873-a64c-c2867ac9266d
 
       scopeParameters: []
